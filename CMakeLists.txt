@@ -5,12 +5,15 @@
 #
 cmake_minimum_required(VERSION 3.20.0)
 
+# set(SHIELD ssd1680_250x122) does not exist
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(ble_dnd_sign)
 
 # NORDIC SDK APP START
 target_sources(app PRIVATE
   src/main.c
+  src/display/display.c
+  src/display/logo.c
 )
 
 # NORDIC SDK APP END

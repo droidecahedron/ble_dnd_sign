@@ -40,6 +40,9 @@
 
 static bool app_button_state;
 
+// status
+extern bool do_not_disturb;
+
 static const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
 	BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
@@ -146,6 +149,7 @@ static struct bt_conn_auth_info_cb conn_auth_info_callbacks;
 
 static void app_led_cb(bool led_state)
 {
+	do_not_disturb = !(do_not_disturb);
 	dk_set_led(USER_LED, led_state);
 }
 

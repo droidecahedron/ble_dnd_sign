@@ -1,0 +1,40 @@
+// To get started, press Ctrl+Space to bring up the completion menu and view the available nodes.
+
+// You can also use the buttons in the sidebar to perform actions on nodes.
+// Actions currently available include:
+
+// * Enabling / disabling the node
+// * Adding the bus to a bus
+// * Removing the node
+// * Connecting ADC channels
+
+// For more help, browse the DeviceTree documentation at https://docs.zephyrproject.org/latest/guides/dts/index.html
+// You can also visit the nRF DeviceTree extension documentation at https://nrfconnect.github.io/vscode-nrf-connect/devicetree/nrfdevicetree.html
+
+/ {
+    chosen {
+        /*/delete-property/ zephyr,ipc_shm;*/
+        zephyr,display = &ssd16xx;
+    };
+};
+
+arduino_spi: &spi3 {
+	status = "okay";
+	cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>; /* D10 */
+	pinctrl-0 = <&spi3_default>; /*SCK P1.15, MISO P1.14, MOSI P1.13 */
+	pinctrl-1 = <&spi3_sleep>;
+	pinctrl-names = "default", "sleep";
+
+    ssd16xx: ssd16xxfb@0 {
+        compatible = "solomon,ssd1680";
+        spi-max-frequency = <4000000>;
+        reg = <0>;
+        width = <250>;
+        height = <122>;
+        dc-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+        busy-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+        softstart = [D7 D6 9D];
+    };
+
+};
