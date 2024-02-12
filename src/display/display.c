@@ -30,8 +30,6 @@ void display(void *p1, void *p2, void *p3)
     const struct device *display_dev;
 
 	display_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
-    int err = device_is_ready(display_dev);
-    LOG_INF("Error: %d", err);
 	if (!device_is_ready(display_dev)) {
         LOG_ERR("Device not ready, aborting test");
 		return;
@@ -57,16 +55,13 @@ void display(void *p1, void *p2, void *p3)
 
     lv_label_set_text(status_label, "N/A");
 
-    lv_obj_align(status_label, LV_ALIGN_TOP_RIGHT, 0, 0);
-
-    lv_obj_t *distance_label = lv_label_create(lv_scr_act());
-	lv_obj_align(distance_label, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_align(status_label, LV_ALIGN_CENTER, 0, 0);
 
 	lv_task_handler();
 	display_blanking_off(display_dev);
 
     while (true) {
-        
+        LOG_INF("in main display task");
 	    (do_not_disturb) ? (lv_label_set_text(status_label, "Do Not Disturb")) : (lv_label_set_text(status_label, "Available"));
         lv_task_handler();
         k_msleep(1000);

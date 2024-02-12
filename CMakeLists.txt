@@ -5,7 +5,7 @@
 #
 cmake_minimum_required(VERSION 3.20.0)
 
-# set(SHIELD ssd1680_250x122) does not exist
+set(SHIELD adafruit_2_8_tft_touch_v2)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(ble_dnd_sign)
 
