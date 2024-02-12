@@ -10,6 +10,7 @@ The status message on the bottom for BLE state is updated when you connect/disco
 When connected, the sample sends the state of **Button 1** on the development kit to the connected device, such as a phone or tablet.
 The mobile application on the device can display the received button state and control the state of **LED 3** on the development kit, as well as the Current Status displayed on the screen.
 
+All display work is leveraging [LVGL](https://lvgl.io/).
 
 You'll either need a mobile device with nRF Connect app, or another devkit to act as the central to interface with the services.
 > For more details on exchange in BLE (characteristics, etc), visit this section in the [Nordic DevAcademy]([url](https://academy.nordicsemi.com/courses/bluetooth-low-energy-fundamentals/lessons/lesson-4-bluetooth-le-data-exchange/)).
