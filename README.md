@@ -2,6 +2,7 @@
 
 ![image](https://github.com/droidecahedron/ble_dnd_sign/assets/63935881/3318a21f-d9d0-4f8a-a84e-e7f799e7c1c7)
 
+## Overview
 Some boiler plate code to add a screen using LVGL to draw logos and labels on top of the [peripheral_lbs](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/samples/bluetooth/peripheral_lbs/README.html) sample.
 
 You send bool true or false to the LED service to toggle the status message in the middle.
@@ -9,17 +10,6 @@ The status message on the bottom for BLE state is updated when you connect/disco
 When connected, the sample sends the state of **Button 1** on the development kit to the connected device, such as a phone or tablet.
 The mobile application on the device can display the received button state and control the state of **LED 3** on the development kit, as well as the Current Status displayed on the screen.
 
-LED 1:
-   Blinks when the main loop is running (that is, the device is advertising) with a period of two seconds, duty cycle 50%.
-
-LED 2:
-   Lit when the development kit is connected.
-
-LED 3:
-   Lit when the development kit is controlled remotely from the connected device.
-
-Button 1:
-   Send a notification with the button state: "pressed" or "released".
 
 You'll either need a mobile device with nRF Connect app, or another devkit to act as the central to interface with the services.
 > For more details on exchange in BLE (characteristics, etc), visit this section in the [Nordic DevAcademy]([url](https://academy.nordicsemi.com/courses/bluetooth-low-energy-fundamentals/lessons/lesson-4-bluetooth-le-data-exchange/)).
@@ -43,6 +33,19 @@ logo.c | nordic logo, you can put whatever image you want. [lvgl/Images](https:/
 
 <img src="https://github.com/droidecahedron/nrf-blueberry/assets/63935881/12612a0e-9f81-4431-8b22-f69704248f89" width=25% height=25%>
 <img src="https://github.com/droidecahedron/ble_dnd_sign/assets/63935881/60ed2e09-91bd-4c0b-bcc8-7ae78a7e0d23", width=22% height=22%>
+
+## User Interface
+**LED 1:**
+   Blinks when the main loop is running (that is, the device is advertising) with a period of two seconds, duty cycle 50%.
+
+**LED 2:**
+   Lit when the development kit is connected.
+
+**LED 3:**
+   Lit when the development kit is controlled remotely from the connected device.
+
+**Button 1:**
+   Send a notification with the button state: "pressed" or "released".
 
 ## Additional Screen Details
 The Adafruit 2.8" TFT Touch Shield v2 with a
