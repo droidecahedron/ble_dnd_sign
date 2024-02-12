@@ -41,7 +41,8 @@
 static bool app_button_state;
 
 // status
-extern bool do_not_disturb;
+volatile bool do_not_disturb = false;
+volatile bool ble_connected = false;
 
 static const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
@@ -60,14 +61,14 @@ static void connected(struct bt_conn *conn, uint8_t err)
 	}
 
 	printk("Connected\n");
-
+	ble_connected = true;
 	dk_set_led_on(CON_STATUS_LED);
 }
 
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
 	printk("Disconnected (reason %u)\n", reason);
-
+	ble_connected = false;
 	dk_set_led_off(CON_STATUS_LED);
 }
 
