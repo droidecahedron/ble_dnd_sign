@@ -20,7 +20,7 @@
 
 arduino_spi: &spi3 {
 	status = "okay";
-	cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>; /* D10 */
+	cs-gpios = <&arduino_header 16 GPIO_ACTIVE_LOW>; /* D10 , gpio1 12*/
 	pinctrl-0 = <&spi3_default>; /*SCK P1.15, MISO P1.14, MOSI P1.13 */
 	pinctrl-1 = <&spi3_sleep>;
 	pinctrl-names = "default", "sleep";
@@ -31,8 +31,8 @@ arduino_spi: &spi3 {
         reg = <0>;
         width = <250>;
         height = <122>;
-        dc-gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
-        reset-gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+        dc-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
         busy-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
         softstart = [D7 D6 9D];
     };
